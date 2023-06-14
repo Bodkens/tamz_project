@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/onsenui.min.js"></script>
+    <script src="js/data_manager.js"></script>
+    <link rel="stylesheet" href="css/onsenui.css">
+    <link rel="stylesheet" href="css/onsen-css-components.min.css">
+    <meta charset="UTF-8">
+    <title>My aquarium</title>
+</head>
+<body>
+
+<ons-navigator id="navigator" page="main_menu.html" swipable></ons-navigator>
+
+</body>
+
+<template id="main_menu.html">
+    <ons-page id="main_page">
+        <ons-toolbar>
+
+            <div class="center">
+                <label>My Aquarium</label>
+            </div>
+        </ons-toolbar>
+
+        <ons-card>
+            <ons-list>
+                <ons-lazy-repeat id="fish_list">
+
+                </ons-lazy-repeat>
+            </ons-list>
+        </ons-card>
+        <ons-fab id="add_button" position="bottom right"><ons-icon icon="md-plus" onclick="showFishPage({})"></ons-icon></ons-fab>
+    </ons-page>
+</template>
+
+<template id="edit.html">
+    <ons-page id="edit_page">
+
+        <ons-toolbar>
+            <div class="left"><ons-back-button>Back</ons-back-button></div>
+            <div class="center">
+                <label id="title"></label>
+            </div>
+        </ons-toolbar>
+
+        <ons-modal id="loading_modal">
+            <div style="text-align: center">
+                <p>
+                    <ons-icon icon="md-spinner" size="28px" spin></ons-icon> Loading...
+                </p>
+            </div>
+        </ons-modal>
+
+        <ons-card>
+            <ons-list>
+                <ons-list-item>
+                    <label class="left">Name:&nbsp;</label><ons-input id="name" class="center"></ons-input>
+                </ons-list-item>
+                <ons-list-item>
+                    <label class="left">Description:</label><br>
+                    <label for="description"></label><textarea class="textarea" id="description" rows="6"></textarea>
+                </ons-list-item>
+
+                <ons-list-item>
+                    <label class="left">Image:</label><br>
+                    <img src="" alt="Select image of fish...." id="image_display" fixed-width="200" width="200" height="150"><br>
+                    <input type="file" id="image" accept="image/jpeg, image/png, image/heic">
+                </ons-list-item>
+
+                <ons-list-item>
+                    <label class="left">Video:</label><br>
+                    <video id="video_display" width="350" height="270" controls></video><br>
+                    <input type="file" id="video" accept="video/mp4">
+                </ons-list-item>
+
+            </ons-list>
+        </ons-card>
+        <ons-card>
+
+            <div class="toolbar__center">
+                <ons-button id="save_button" onclick="addFish()">Save</ons-button>
+            </div>
+
+        </ons-card>
+    </ons-page>
+</template>
+
+
+
+<template id="display_page.html">
+    <ons-page id="display_page">
+
+        <ons-toolbar>
+            <div class="left"><ons-back-button>Back</ons-back-button></div>
+            <div class="center">
+                <label id="display_title"></label>
+            </div>
+        </ons-toolbar>
+        <ons-card>
+            <ons-list>
+                <ons-list-item>
+                    <div class="center">
+                        <img src="" alt="Select image of fish...." id="display_image" width="300" height="150">
+                    </div>
+
+                </ons-list-item>
+
+                <ons-list-item>
+                    <label id="display_description"></label>
+                </ons-list-item>
+
+                <ons-list-item>
+                    <video id="display_video" width="350" height="270" controls></video><br>
+                </ons-list-item>
+            </ons-list>
+        </ons-card>
+
+    </ons-page>
+</template>
+</html>
